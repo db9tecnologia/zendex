@@ -1,0 +1,72 @@
+<?php 
+$form = $this->form;
+
+$form->setAttributes(['action'=>$this->url('status.create')]);
+
+$arquivo = $form->get('arquivo')
+        ->setAttributes(['class'=>'form-control']);
+
+$atualizado_em = $form->get('atualizado_em')
+        ->setAttributes(['class'=>'form-control']);
+
+$hash = $form->get('hash')
+        ->setAttributes(['class'=>'form-control']);
+
+$status = $form->get('status')
+        ->setAttributes(['class'=>'form-control']);
+
+$submit = $form->get('submit')
+        ->setAttributes(['class'=>'btn btn-info']);;
+
+$form->prepare();
+
+?>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <?php echo $this->form()->openTag($form); ?>
+        
+        <?php $message = $this->formElementErrors($arquivo,['class'=>'help-block']); ?>
+        <div class="form-group" class="<?php echo $message?'has-error':''; ?>">
+            <?php             
+            echo $this->formLabel($arquivo); 
+            echo $this->formElement($arquivo); 
+            echo $message;
+            ?>
+        </div>
+        
+        <?php $message = $this->formElementErrors($atualizado_em,['class'=>'help-block']); ?>
+        <div class="form-group" class="<?php echo $message?'has-error':''; ?>">
+            <?php             
+            echo $this->formLabel($atualizado_em); 
+            echo $this->formElement($atualizado_em); 
+            ?>
+        </div>
+        
+        
+        <?php $message = $this->formElementErrors($hash,['class'=>'help-block']); ?>
+        <div class="form-group" class="<?php echo $message?'has-error':''; ?>">
+            <?php             
+            echo $this->formLabel($hash); 
+            echo $this->formElement($hash); 
+            echo $message;
+            ?>
+        </div>
+        
+        <?php $message = $this->formElementErrors($status,['class'=>'help-block']); ?>
+        <div class="form-group" class="<?php echo $status?'has-error':''; ?>">
+            <?php             
+            echo $this->formLabel($status); 
+            echo $this->formElement($status); 
+            echo $message;
+            ?>
+        </div>
+        
+        <div class="form-group">
+            <?php             
+            echo $this->formElement($submit); 
+            ?>
+        </div>
+        
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<?php 
+/**
+ * @var \App\Entity\Status $item
+ */
+
+//var_dump($this->list);
+?>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <a href="<?php echo $this->url('status.create');?>" class="btn btn-primary">Adicionar</a>
+    </div>
+</div>
+<table class="table table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>Data / Hora</th>
+            <th>Arquivo</th>
+            <th>Status</th>
+            <th>Vendas</th>
+            <th>Estoque</th>
+            <th>Transferencias</th>
+            <th>Clientes</th>
+            <th>Vendedores</th>
+            <th>Hash</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($this->list as $item) { ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($item->getAtualizadoEm()->format('d/m/Y H:i:s')); ?></td>
+            <td><?php echo $this->escapeHtml($item->getArquivo());?></td>
+            <td><?php echo $this->escapeHtml($item->getStatus());?></td>
+            <td><?php echo $this->escapeHtml($item->getVendas());?></td>
+            <td><?php echo $this->escapeHtml($item->getEstoque());?></td>
+            <td><?php echo $this->escapeHtml($item->getTransferencias());?></td>
+            <td><?php echo $this->escapeHtml($item->getCliente());?></td>
+            <td><?php echo $this->escapeHtml($item->getVendedor());?></td>
+            <td><?php echo $this->escapeHtml($item->getHash());?></td>
+        </tr>
+        <?php }?>
+    </tbody>
+</table>
+<?php 
+
